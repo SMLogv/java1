@@ -4,28 +4,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.AddContact;
 
-public class ContactHelper {
+public class ContactHelper extends BaseHelper {
 
-    private WebDriver wd;
-
-    public ContactHelper(WebDriver wd) {
-        this.wd = wd;
+     public ContactHelper(WebDriver wd) {
+       super(wd);
     }
 
-
     public void submitContactCreation() {
-        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+
+        click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
     public void fillContactForm(AddContact addContact) {
-        wd.findElement(By.name("firstname")).sendKeys(addContact.getName());
-        wd.findElement(By.name("middlename")).sendKeys(addContact.getMidlename());
-        wd.findElement(By.name("lastname")).sendKeys(addContact.getLastname());
-        wd.findElement(By.name("nickname")).sendKeys(addContact.getNick());
-        wd.findElement(By.name("address")).sendKeys(addContact.getAddress());
+     type(By.name("firstname"),(addContact.getName()));
+     type(By.name("middlename"),(addContact.getMidlename()));
+     type(By.name("lastname"),(addContact.getLastname()));
+     type(By.name("nickname"),(addContact.getAddress()));
+     type(By.name("address"), (addContact.getAddress()));
     }
 
     public void gotoAddContactPage() {
-        wd.findElement(By.linkText("add new")).click();
+
+        click(By.linkText("add new"));
     }
 }
