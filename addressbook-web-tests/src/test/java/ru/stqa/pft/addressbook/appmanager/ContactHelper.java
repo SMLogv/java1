@@ -24,7 +24,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void gotoAddContactPage() {
-
         click(By.linkText("add new"));
     }
+
 }

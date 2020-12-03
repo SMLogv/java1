@@ -15,6 +15,7 @@ public class AddContact {
         this.address = address;
     }
 
+
     public String getName() {
         return name;
     }

@@ -11,7 +11,22 @@ public class NavigationHelper extends BaseHelper {
 
 
     public void gotoGroupPage() {
-
         click(By.linkText("groups"));
     }
+    public void gotoHomePage1() {
+        click(By.linkText("home"));
+    }
+
+    public void gotoHomePage2() {
+        click(By.linkText("home page"));
+    }
+
+    public void clicktoSaveUpdateContact() {
+        click(By.cssSelector("input[name=\"update\"]"));
+    }
+
+    public void clicktoEditContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
 }
