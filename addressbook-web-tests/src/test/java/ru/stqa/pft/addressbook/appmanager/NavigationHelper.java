@@ -31,5 +31,5 @@ public class NavigationHelper extends BaseHelper {
 
     public void ClickDeleteButton() {        wd.findElement(By.xpath("//input[@value='Delete']")).click(); }
 
-
+    public void ClikCheckBox() { wd.findElement(By.name("selected[]")).click();    }
 }

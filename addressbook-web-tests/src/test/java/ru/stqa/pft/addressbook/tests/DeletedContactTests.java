@@ -12,7 +12,7 @@ public class DeletedContactTests extends  TestBase  {
     @Test
     public void testUntitledTests() throws InterruptedException {
         app.getNavigationHelper().gotoHomePage1();
-        app.getContactHelper().ClikCheckBoxContact();
+        app.getNavigationHelper().ClikCheckBox();
 
         app.getNavigationHelper().ClickDeleteButton();
         Thread.sleep(5000);
