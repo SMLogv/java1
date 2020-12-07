@@ -27,4 +27,12 @@ public class ContactHelper extends BaseHelper {
         click(By.linkText("add new"));
     }
 
+    public void ClikCheckBoxContact() {
+        wd.findElement(By.name("selected[]")).click();
+    }
+
+    public void ExitAlert() {
+        wd.switchTo().alert().accept();
+    }
+
 }

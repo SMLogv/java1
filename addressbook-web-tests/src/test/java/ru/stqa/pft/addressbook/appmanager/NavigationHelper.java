@@ -29,4 +29,7 @@ public class NavigationHelper extends BaseHelper {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
+    public void ClickDeleteButton() {        wd.findElement(By.xpath("//input[@value='Delete']")).click(); }
+
+
 }
