@@ -12,6 +12,10 @@ public class EditedContactTests extends  TestBase {
     @Test
     public void testUntitledTestCase() throws InterruptedException {
         app.getNavigationHelper().gotoHomePage1();
+        if (! app.getContactHelper().isThereAContact()){
+            app.getContactHelper().createContact(new AddContact("Ivan", "Pupkin", "Petrov", "IPP", "Voronezh"));
+            app.getNavigationHelper().gotoHomePage1();
+        }
         app.getNavigationHelper().clicktoEditContact();
         app.getContactHelper().fillContactForm(new AddContact("Mikle", "Jakson", "ZAra", "IPP", "New York"));
         Thread.sleep(5000);
