@@ -12,7 +12,7 @@ public class Primes {
     }
 
 public static void main (String[] args) {
-        boolean result = isPrime(77);
+        boolean result = isPrime(Integer.MAX_VALUE);
         System.out.println(result);
     }
 
