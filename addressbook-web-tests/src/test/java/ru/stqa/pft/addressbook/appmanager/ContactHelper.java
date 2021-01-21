@@ -33,13 +33,4 @@ public class ContactHelper extends BaseHelper {
         wd.switchTo().alert().accept();
     }
 
-    public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
-    public void createContact(AddContact group) {
-        gotoAddContactPage();
-        fillContactForm(group);
-        submitContactCreation();
-    }
 }
