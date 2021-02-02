@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.TestBase;
 
+import java.util.List;
 
 
 public class GroupEditionTests extends  TestBase {
@@ -17,8 +18,8 @@ public class GroupEditionTests extends  TestBase {
         if (! app.getGroupHelper().isThereAGroup()){
             app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
         }
-        int before = app.getGroupHelper().getGroupCount();
-        app.getGroupHelper().selectGroup(before-1);
+        List<GroupData> before = app.getGroupHelper().getGroupList();
+        app.getGroupHelper().selectGroup(before.size()-1);
         Thread.sleep(3000);
         app.getGroupHelper().clicktoEditGroup();
         app.getGroupHelper().fillGroupForm(new GroupData("Z-Imya", "Zagolovok", "Futer"));
@@ -27,8 +28,8 @@ public class GroupEditionTests extends  TestBase {
         Thread.sleep(3000);
         app.getGroupHelper().returnToGroups();
         Thread.sleep(3000);
-        int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(after, before);
+        List<GroupData> after = app.getGroupHelper().getGroupList();
+        Assert.assertEquals(after.size(), before.size());
 
 
 
