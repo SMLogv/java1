@@ -15,13 +15,15 @@ public class GroupDeletionTests extends TestBase {
   public void testGroupDeletion() throws Exception {
 
     app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereAGroup()){
+        if (! app.getGroupHelper().isThereAGroup()){
           app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
     }
     int before = app.getGroupHelper().getGroupCount();
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectGroup(before-1);
+    Thread.sleep(3000);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
+    Thread.sleep(3000);
     int after = app.getGroupHelper().getGroupCount();
     Assert.assertEquals(after, before -1);
   }
