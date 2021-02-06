@@ -29,12 +29,7 @@ public class GroupCreationTests extends TestBase {
             if (g.getId()>max);
             max=g.getId();
         }
-        Comparator<? super GroupData> byId = new Comparator<GroupData>() {
-            @Override
-            public int compare(GroupData o1, GroupData o2) {
-                return Integer.compare(o1.getId(), o2.getId());
-            }
-        };
+        Comparator<? super GroupData> byId = (o1, o2)  ->  Integer.compare(o1.getId(), o2.getId());
         int max1=after.stream().max(byId).get().getId();
         group.setId(max1);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
