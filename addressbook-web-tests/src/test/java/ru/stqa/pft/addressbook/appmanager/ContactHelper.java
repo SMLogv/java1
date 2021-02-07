@@ -27,10 +27,11 @@ public class ContactHelper extends BaseHelper {
         click(By.linkText("add new"));
     }
 
-
-
     public void ExitAlert() {
         wd.switchTo().alert().accept();
     }
 
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
 }
