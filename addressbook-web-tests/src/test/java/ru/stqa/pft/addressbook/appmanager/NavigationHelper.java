@@ -36,4 +36,6 @@ public class NavigationHelper extends BaseHelper {
     public void ClikCheckBox(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
+
+
 }
