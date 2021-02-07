@@ -2,7 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.AddContact;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -33,5 +37,17 @@ public class ContactHelper extends BaseHelper {
 
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<AddContact> getContactList() {
+        List<AddContact> contacts = new ArrayList<AddContact>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            String lastname = element.getText();;
+            AddContact contact = new AddContact (name, lastname, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 }
