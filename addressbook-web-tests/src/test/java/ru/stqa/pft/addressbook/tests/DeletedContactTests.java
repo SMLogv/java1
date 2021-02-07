@@ -25,6 +25,11 @@ public class DeletedContactTests extends  TestBase  {
         app.getNavigationHelper().gotoHomePage1();
         List<AddContact> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size()-4); // т.к. у 1 класса 4 td.center
+
+        before.remove(before.size()-4);
+        for (int i=0; i < after.size(); i++) {
+           Assert.assertEquals(before.get(i), after.get(i));
+        }
     }
 
 
