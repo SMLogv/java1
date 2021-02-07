@@ -14,7 +14,7 @@ public class DeletedContactTests extends  TestBase  {
     public void testUntitledTests() throws InterruptedException {
         app.getNavigationHelper().gotoHomePage1();
         int before = app.getContactHelper().getContactCount();
-        app.getNavigationHelper().ClikCheckBox();
+        app.getNavigationHelper().ClikCheckBox(before-1);
 
         app.getNavigationHelper().ClickDeleteButton();
         Thread.sleep(5000);

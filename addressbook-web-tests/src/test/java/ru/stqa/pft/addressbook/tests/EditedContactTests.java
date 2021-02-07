@@ -14,7 +14,7 @@ public class EditedContactTests extends  TestBase {
     public void testUntitledTestCase() throws InterruptedException {
         app.getNavigationHelper().gotoHomePage1();
         int before = app.getContactHelper().getContactCount();
-        app.getNavigationHelper().clicktoEditContact();
+        app.getNavigationHelper().clicktoEditContact(before-1);
         app.getContactHelper().fillContactForm(new AddContact("Mikle", "Jakson", "ZAra", "IPP", "New York"));
         Thread.sleep(5000);
         app.getNavigationHelper().clicktoSaveUpdateContact();

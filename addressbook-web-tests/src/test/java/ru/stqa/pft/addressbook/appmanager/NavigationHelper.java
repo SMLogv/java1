@@ -25,11 +25,15 @@ public class NavigationHelper extends BaseHelper {
         click(By.cssSelector("input[name=\"update\"]"));
     }
 
-    public void clicktoEditContact() {
-        click(By.xpath("//img[@alt='Edit']"));
+    public void clicktoEditContact(int index)
+    {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
+
 
     public void ClickDeleteButton() {        wd.findElement(By.xpath("//input[@value='Delete']")).click(); }
 
-    public void ClikCheckBox() { wd.findElement(By.name("selected[]")).click();    }
+    public void ClikCheckBox(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+    }
 }
