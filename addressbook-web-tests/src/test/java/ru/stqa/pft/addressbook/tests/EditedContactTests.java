@@ -14,14 +14,14 @@ public class EditedContactTests extends  TestBase {
 
     @Test
     public void testUntitledTestCase() throws InterruptedException {
-        app.getNavigationHelper().gotoHomePage1();
+        app.goTo().gotoHomePage1();
         List<AddContact> before = app.getContactHelper().getContactList();
-        app.getNavigationHelper().clicktoEditContact(0);  //последний не получается сейчас, т.к. кликается на значок, а его индекс в спимок не включал
+        app.goTo().clicktoEditContact(0);  //последний не получается сейчас, т.к. кликается на значок, а его индекс в спимок не включал
         AddContact contact = new AddContact("Mikle", "Jakson", "ZAra", "IPP", "New York");
         app.getContactHelper().fillContactForm(contact);
         Thread.sleep(2000);
-        app.getNavigationHelper().clicktoSaveUpdateContact();
-        app.getNavigationHelper().gotoHomePage2();
+        app.goTo().clicktoSaveUpdateContact();
+        app.goTo().gotoHomePage2();
         List<AddContact> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
 

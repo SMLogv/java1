@@ -12,13 +12,13 @@ public class AddContactTests extends TestBase {
 
     @Test
     public void testAddContact() throws Exception {
-        app.getNavigationHelper().gotoHomePage1();
+        app.goTo().gotoHomePage1();
         List<AddContact> before = app.getContactHelper().getContactList();
         app.getContactHelper().gotoAddContactPage();
         app.getContactHelper().fillContactForm(new AddContact("Ivan", "Pupkin", "Petrov", "IPP", "Voronezh"));
         Thread.sleep(3000);
         app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().gotoHomePage1();
+        app.goTo().gotoHomePage1();
         List<AddContact> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size()+4); // т.к. у 1 класса 4 td.center
     }
