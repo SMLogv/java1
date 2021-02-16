@@ -17,7 +17,7 @@ public class GroupEditionTests extends  TestBase {
     public void ensurePrecinditions () {
         app.goTo().groupPage();
         if (app.group().list().size() == 0){
-            app.group().create(new GroupData("test1", "test2", "test3"));
+            app.group().create(new GroupData().withName("test1"));
         }
     }
 
@@ -25,7 +25,7 @@ public class GroupEditionTests extends  TestBase {
     public void testUntitledTestCase() throws Exception {
         List<GroupData> before = app.group().list();
         int index = before.size()-1;
-        GroupData group = new GroupData(before.get(index).getId(), "Z-Imya", "Zagolovok", "Futer");
+        GroupData group = new GroupData().withId(before.get(index).getId()).withName("Z-Imya").withHeader("Zagolovok").withFooter("Futer");
         app.group().modify(index, group);
         List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size());
