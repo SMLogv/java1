@@ -46,8 +46,7 @@ public class ContactHelper extends BaseHelper {
             String name = element.getText();
             String lastname = element.getText();
             //String id = element.findElement(By.tagName("input")).getAttribute("value");
-            AddContact contact = new AddContact (name, lastname, null, null, null);
-            contacts.add(contact);
+            contacts.add(new AddContact().withName(name).withLastname(lastname));
         }
         return contacts;
     }

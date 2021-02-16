@@ -3,29 +3,43 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class AddContact {
-    private final String id;
-    private final String name;
-    private final String midlename;
-    private final String lastname;
-    private final String nick;
-    private final String address;
+    private  String id = null;
+    private  String name;
+    private  String midlename;
+    private  String lastname;
+    private  String nick;
+    private  String address;
 
-    public AddContact(String id, String name, String midlename, String lastname, String nick, String address) {
+    public AddContact withId(String id) {
         this.id = id;
-        this.name = name;
-        this.midlename = midlename;
-        this.lastname = lastname;
-        this.nick = nick;
-        this.address = address;
+        return this;
     }
-    public AddContact( String name, String midlename, String lastname, String nick, String address) {
-        this.id = null;
+
+    public AddContact withName(String name) {
         this.name = name;
-        this.midlename = midlename;
-        this.lastname = lastname;
-        this.nick = nick;
-        this.address = address;
+        return this;
     }
+
+    public AddContact withMidlename(String midlename) {
+        this.midlename = midlename;
+        return this;
+    }
+
+    public AddContact withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public AddContact withNick(String nick) {
+        this.nick = nick;
+        return this;
+    }
+
+    public AddContact Address(String address) {
+        this.address = address;
+        return this;
+    }
+
 
     @Override
     public String toString() {

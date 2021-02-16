@@ -15,7 +15,8 @@ public class AddContactTests extends TestBase {
         app.goTo().HomePage1();
         List<AddContact> before = app.contact().list();
         app.contact().gotoAddContactPage();
-        app.contact().fillContactForm(new AddContact("Ivan", "Pupkin", "Petrov", "IPP", "Voronezh"));
+        app.contact().fillContactForm(new AddContact().withName("Ivan").withLastname("Pupkin")
+                .withMidlename("Petrov").withNick("IPP").Address("Voronezh"));
         Thread.sleep(3000);
         app.contact().submitContactCreation();
         app.goTo().HomePage1();

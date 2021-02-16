@@ -17,7 +17,8 @@ public class EditedContactTests extends  TestBase {
         app.goTo().HomePage1();
         List<AddContact> before = app.contact().list();
         app.goTo().clicktoEditContact(0);  //последний не получается сейчас, т.к. кликается на значок, а его индекс в спимок не включал
-        AddContact contact = new AddContact("Mikle", "Jakson", "ZAra", "IPP", "New York");
+        AddContact contact = new AddContact().withName("Mikle").withMidlename("Jakson").withLastname("ZAra")
+                .withNick("IPP").Address("New York");
         app.contact().fillContactForm(contact);
         Thread.sleep(2000);
         app.goTo().clicktoSaveUpdateContact();
