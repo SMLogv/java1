@@ -15,15 +15,15 @@ public class DeletedContactTests extends  TestBase  {
 
     @Test
     public void testUntitledTests() throws InterruptedException {
-        app.goTo().gotoHomePage1();
-        List<AddContact> before = app.getContactHelper().getContactList();
+        app.goTo().HomePage1();
+        List<AddContact> before = app.contact().list();
         app.goTo().ClikCheckBox(0); //последний не получается сейчас, т.к. кликается на значок, а его индекс в спимок не включал
 
-        app.goTo().ClickDeleteButton();
+        app.goTo().delete();
         Thread.sleep(5000);
-        app.getContactHelper().ExitAlert();
-        app.goTo().gotoHomePage1();
-        List<AddContact> after = app.getContactHelper().getContactList();
+        app.contact().ExitAlert();
+        app.goTo().HomePage1();
+        List<AddContact> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size()-4); // т.к. у 1 класса 4 td.center
 
         before.remove(before.size()-4);

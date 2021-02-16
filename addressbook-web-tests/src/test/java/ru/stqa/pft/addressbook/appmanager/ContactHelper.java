@@ -39,7 +39,7 @@ public class ContactHelper extends BaseHelper {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<AddContact> getContactList() {
+    public List<AddContact> list() {
         List<AddContact> contacts = new ArrayList<AddContact>();
         List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
         for (WebElement element : elements) {

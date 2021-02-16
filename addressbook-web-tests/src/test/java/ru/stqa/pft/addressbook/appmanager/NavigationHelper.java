@@ -13,7 +13,7 @@ public class NavigationHelper extends BaseHelper {
     public void groupPage() {
         click(By.linkText("groups"));
     }
-    public void gotoHomePage1() {
+    public void HomePage1() {
         click(By.linkText("home"));
     }
 
@@ -31,7 +31,7 @@ public class NavigationHelper extends BaseHelper {
     }
 
 
-    public void ClickDeleteButton() {        wd.findElement(By.xpath("//input[@value='Delete']")).click(); }
+    public void delete() {        wd.findElement(By.xpath("//input[@value='Delete']")).click(); }
 
     public void ClikCheckBox(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
