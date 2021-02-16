@@ -7,8 +7,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.TestBase;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 
 public class GroupEditionTests extends  TestBase {
@@ -23,18 +22,16 @@ public class GroupEditionTests extends  TestBase {
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        List<GroupData> before = app.group().list();
-        int index = before.size()-1;
-        GroupData group = new GroupData().withId(before.get(index).getId()).withName("Z-Imya").withHeader("Zagolovok").withFooter("Futer");
-        app.group().modify(index, group);
-        List<GroupData> after = app.group().list();
+        Set<GroupData> before = app.group().all();
+        GroupData modifiedGroup = before.iterator().next();
+        GroupData group = new GroupData().
+                withId(modifiedGroup.getId()).withName("Z-Imya").withHeader("Zagolovok").withFooter("Futer");
+        app.group().modify(group);
+        Set<GroupData> after = app.group().all();
         Assert.assertEquals(after.size(), before.size());
 
-        before.remove(index);
+        before.remove(modifiedGroup);
         before.add(group);
-        Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        before.sort(byId);
-        after.sort(byId);
         Assert.assertEquals(before, after);
     }
 
