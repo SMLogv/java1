@@ -48,6 +48,10 @@ public class GroupHelper extends BaseHelper {
         wd.findElements(By.name("selected[]")).get(index).click();
           }
 
+    public void selectGroupById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    }
+
     public void create(GroupData group) {
         initGroupCreation();
         fillGroupForm(group);
@@ -104,4 +108,9 @@ public class GroupHelper extends BaseHelper {
        returnToGroupPage();
     }
 
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
+        deleteSelectedGroups();
+        returnToGroupPage();
+    }
 }
