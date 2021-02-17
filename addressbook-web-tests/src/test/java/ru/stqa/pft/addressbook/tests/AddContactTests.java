@@ -21,7 +21,7 @@ public class AddContactTests extends TestBase {
         app.contact().submitContactCreation();
         app.goTo().HomePage1();
         List<AddContact> after = app.contact().list();
-        Assert.assertEquals(after.size(), before.size()+4); // т.к. у 1 класса 4 td.center
+        Assert.assertEquals(after.size(), before.size()+1); // т.к. у 1 класса 4 td.center
     }
 
 

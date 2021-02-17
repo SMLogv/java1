@@ -41,11 +41,11 @@ public class ContactHelper extends BaseHelper {
 
     public List<AddContact> list() {
         List<AddContact> contacts = new ArrayList<AddContact>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("td.center"));
+        List<WebElement> elements = wd.findElements(By.xpath("//td[.//input]"));
         for (WebElement element : elements) {
             String name = element.getText();
             String lastname = element.getText();
-            //String id = element.findElement(By.tagName("input")).getAttribute("value");
+            String id = element.findElement(By.tagName("input")).getAttribute("value");
             contacts.add(new AddContact().withName(name).withLastname(lastname));
         }
         return contacts;
