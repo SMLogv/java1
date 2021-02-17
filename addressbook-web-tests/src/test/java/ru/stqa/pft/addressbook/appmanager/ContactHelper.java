@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.AddContact;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -50,4 +52,17 @@ public class ContactHelper extends BaseHelper {
         }
         return contacts;
     }
+
+    public Set<AddContact> all() {
+        Set<AddContact> groups = new HashSet<AddContact>();
+        List<WebElement> elements = wd.findElements(By.xpath("//td[.//input]"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            groups.add(new AddContact().withId(id).withName(name));
+        }
+        return groups;
+    }
+
 }
+

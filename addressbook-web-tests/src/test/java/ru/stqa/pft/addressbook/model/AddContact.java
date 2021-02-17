@@ -3,14 +3,14 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class AddContact {
-    private  String id = null;
+    private int id = Integer.MAX_VALUE;;
     private  String name;
     private  String midlename;
     private  String lastname;
     private  String nick;
     private  String address;
 
-    public AddContact withId(String id) {
+    public AddContact withId(int id) {
         this.id = id;
         return this;
     }
@@ -50,7 +50,7 @@ public class AddContact {
                 '}';
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -79,9 +79,7 @@ public class AddContact {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddContact contact = (AddContact) o;
-        return name != null ? name.equals(contact.name) : contact.name == null
-                && lastname != null ? lastname.equals(contact.lastname) : contact.lastname == null
-                && id != null ? id.equals(contact.id) : contact.id == null;
+        return Objects.equals(id, contact.id) && Objects.equals(name, contact.name) && Objects.equals(lastname, contact.lastname);
     }
 
     @Override
