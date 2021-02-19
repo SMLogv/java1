@@ -57,6 +57,7 @@ public class GroupHelper extends BaseHelper {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
+        groupCache = null;
         returnToGroupPage();
     }
 
@@ -65,7 +66,14 @@ public class GroupHelper extends BaseHelper {
          clicktoEditGroup();
          fillGroupForm(group);
          clicktoUpdateGroup();
+        groupCache = null;
          returnToGroups();
+    }
+    public void delete(GroupData group) {
+        selectGroupById(group.getId());
+        deleteSelectedGroups();
+        groupCache = null;
+        returnToGroupPage();
     }
 
     public boolean isThereAGroup() {
@@ -74,7 +82,9 @@ public class GroupHelper extends BaseHelper {
 
     public int getGroupCount() {
         return wd.findElements(By.name("selected[]")).size();
-    }
+        }
+
+
 
     public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<GroupData>();
@@ -87,15 +97,20 @@ public class GroupHelper extends BaseHelper {
         return groups;
     }
 
+    private Groups groupCache = null;
+
     public Groups all() {
-        Groups groups = new Groups();
+        if (groupCache != null) {
+        return new Groups(groupCache);
+        }
+        groupCache = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            groups.add(new GroupData().withId(id).withName(name));
+            groupCache.add(new GroupData().withId(id).withName(name));
         }
-        return groups;
+        return new Groups(groupCache);
     }
 
 
@@ -109,9 +124,5 @@ public class GroupHelper extends BaseHelper {
        returnToGroupPage();
     }
 
-    public void delete(GroupData group) {
-        selectGroupById(group.getId());
-        deleteSelectedGroups();
-        returnToGroupPage();
-    }
+
 }
